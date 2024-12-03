@@ -1,3 +1,4 @@
+// Get the video and canvas elements
 const camera = document.getElementById("camera");
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
@@ -6,22 +7,23 @@ const ctx = canvas.getContext("2d");
 const targetWidth = 667;
 const targetHeight = 373;
 
-// Resize the video and canvas to match the overlay dimensions
+// Set the video and canvas dimensions
 camera.width = targetWidth;
 camera.height = targetHeight;
 canvas.width = targetWidth;
 canvas.height = targetHeight;
 
-// Access the video feed using the front camera
+// Access the front camera
 navigator.mediaDevices
     .getUserMedia({
         video: {
             width: targetWidth,
             height: targetHeight,
-            facingMode: "user", // Use front camera
+            facingMode: "user" // Use the front camera
         },
     })
     .then((stream) => {
+        // Assign the video stream to the camera element
         camera.srcObject = stream;
         camera.addEventListener("loadedmetadata", () => {
             draw();
@@ -37,10 +39,12 @@ overlay.src = "overlay.png"; // Replace with your overlay image path
 
 // Draw the video feed and overlay image
 function draw() {
-    ctx.drawImage(camera, 0, 0, targetWidth, targetHeight); // Draw video feed
+    // Draw the video feed onto the canvas
+    ctx.drawImage(camera, 0, 0, targetWidth, targetHeight);
 
-    // Draw the overlay
+    // Draw the overlay on top of the video feed
     ctx.drawImage(overlay, 0, 0, targetWidth, targetHeight);
 
-    requestAnimationFrame(draw); // Repeat drawing
+    // Continuously update the canvas
+    requestAnimationFrame(draw);
 }
