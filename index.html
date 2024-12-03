@@ -2,16 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=667, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Camera Overlay</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Overlay Filter</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        #camera, #canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
 </head>
 <body>
-    <!-- Video and Canvas Elements -->
-    <video id="camera" autoplay playsinline></video>
+    <video id="camera" autoplay muted></video>
     <canvas id="canvas"></canvas>
-
-    <!-- JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
