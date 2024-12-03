@@ -3,15 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Face Overlay</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Web Overlay Filter</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        #camera, #canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
 </head>
 <body>
-    <video id="camera" autoplay playsinline></video>
+    <video id="camera" autoplay muted></video>
     <canvas id="canvas"></canvas>
-
-    <!-- Load FaceAPI.js -->
-    <script src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api"></script>
     <script src="script.js"></script>
 </body>
 </html>
